@@ -4,9 +4,11 @@
 
 **Aspiring Data Scientist | Machine Learning | Network Analysis | UX Design**
 
-[Email](mailto:akanksha.chatterjee23@gmail.com) | [+41 779884891](tel:+41779884891) | [LinkedIn](#https://www.linkedin.com/in/akanksha-chatterjee-b08782250/) | [GitHub](#https://github.com/ac2325)
+[Email](mailto:akanksha.chatterjee23@gmail.com) | [+41 779884891](tel:+41779884891) | [LinkedIn](https://www.linkedin.com/in/akanksha-chatterjee-b08782250/) | [GitHub](https://github.com/ac2325)
 
 ---
+
+
 
 ## About Me
 I am an aspiring data scientist with expertise in data analysis, machine learning, predictive modeling, and network analysis. I am currently pursuing a **B.Sc. in Computational Social Science** at the **University of Amsterdam**, a multidisciplinary program focused on using computational tools to solve societal challenges. My passion lies in delivering data-driven solutions and collaborating with stakeholders to make meaningful impact.
@@ -80,6 +82,6 @@ I am an aspiring data scientist with expertise in data analysis, machine learnin
 ---
 
 ## Get in Touch
-For collaborations, research opportunities, or AI-driven projects, feel free to reach out via **[email](mailto:akanksha.chatterjee23@gmail.com)** or connect on **[LinkedIn](#https://www.linkedin.com/in/akanksha-chatterjee-b08782250/)**.
+For collaborations, research opportunities, or AI-driven projects, feel free to reach out via **[email](mailto:akanksha.chatterjee23@gmail.com)** or connect on **[LinkedIn](https://www.linkedin.com/in/akanksha-chatterjee-b08782250/)**.
 
 🚀 *Passionate about bridging the gap between data science and real-world impact!*
