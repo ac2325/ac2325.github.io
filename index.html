@@ -148,46 +148,56 @@
     </main>
 
     <!-- Font Awesome for icons -->
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
+   <script
+  src="https://kit.fontawesome.com/a076d05399.js"
+  crossorigin="anonymous"
+></script>
 
-    <script>
-        // Highlight active navigation link
-        document.addEventListener('DOMContentLoaded', function () {
-            const navLinks = document.querySelectorAll('.nav-links a');
+<script>
+  // Highlight active navigation link & smooth scroll
+  document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('.nav-links a');
 
-            navLinks.forEach((link) => {
-                link.addEventListener('click', function () {
-                    navLinks.forEach((l) => l.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
+    navLinks.forEach((link) => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent default jump behavior
 
-            // Update active link on scroll
-            window.addEventListener('scroll', function () {
-                const sections = document.querySelectorAll('section');
-                let currentSection = '';
+        navLinks.forEach((l) => l.classList.remove('active'));
+        this.classList.add('active');
 
-                sections.forEach((section) => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
 
-                    if (window.scrollY >= sectionTop - 100) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
 
-                navLinks.forEach((link) => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSection}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-        });
-    </script>
+    // Update active link on scroll
+    window.addEventListener('scroll', function () {
+      const sections = document.querySelectorAll('section');
+      let currentSection = '';
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+
+        if (window.scrollY >= sectionTop - 100) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
 
