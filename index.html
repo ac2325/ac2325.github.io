@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hannah Rose Kirk - Professional Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600&family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2a2a2a;
+            --secondary: #555;
+            --accent: #ff6b35;
+            --light: #f8f8f8;
+            --dark: #1a1a1a;
+            --code: #f0f0f0;
+            --border: #e0e0e0;
+            --sidebar-width: 30%;
+            --content-width: 70%;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--primary);
+            line-height: 1.6;
+            background-color: var(--light);
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--dark);
+        }
+        
+        /* Sidebar Styles */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: white;
+            padding: 40px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .main-content {
+            width: var(--content-width);
+            margin-left: var(--sidebar-width);
+        }
+        
+        .container {
+            max-width: 100%;
+            padding: 0 40px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn svg {
+            margin-left: 8px;
+        }
+        
+        /* Navigation Styles */
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            color: var(--secondary);
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--dark);
+        }
+        
+        .nav-links a.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+            padding-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: white;
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .hero-image {
+            margin-bottom: 30px;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .keywords {
+            background-color: var(--code);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Inconsolata', monospace;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--secondary);
+            max-width: 700px;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .about-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        /* Publications Section */
+        .publications {
+            background-color: #f9f9f9;
+        }
+        
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .pub-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .pub-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .pub-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            text-align: left;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 40px 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            color: white;
+        }
+        
+        .copyright {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+                padding: 20px;
+            }
+            
+            .main-content {
+                width: 100%;
+                margin-left: 0;
+            }
+            
+            .hero-content {
+                text-align: center;
+                align-items: center;
+            }
+            
+            .hero-image img {
+                max-width: 200px;
+            }
+            
+            .nav-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin-top: 20px;
+            }
+            
+            .social-links {
+                margin-top: 20px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Hannah Rose Kirk">
+        </div>
+        
+        <h1>Hannah Rose Kirk</h1>
+        
+        <div class="keywords">
+            <span style="color: #6a9955;">#</span> <span style="color: #569cd6;">keywords</span> = {<br>
+            &nbsp;&nbsp;<span style="color: #ce9178;">"Statistics"</span>,<br>
+            &nbsp;&nbsp;<span style="color: #ce9178;">"Cambridge University"</span>,<br>
+            &nbsp;&nbsp;<span style="color: #ce9178;">"Documentaries"</span><br>
+            }
+        </div>
+        
+        <nav class="nav-links">
+            <a href="#summary" class="active">Summary</a>
+            <a href="#publications">Publications</a>
+            <a href="#news">In the News</a>
+        </nav>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fas fa-graduation-cap"></i></a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Summary Section -->
+        <section id="summary" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Summary</h2>
+                    <p>I'm a researcher specializing in statistics and data science with a passion for communicating complex ideas through documentaries.</p>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h3>Education</h3>
+                        <p><strong>PhD in Statistics</strong><br>
+                        Cambridge University, 2020-2024</p>
+                        
+                        <p><strong>MSc in Data Science</strong><br>
+                        University of London, 2018-2020</p>
+                        
+                        <p><strong>BSc in Mathematics</strong><br>
+                        University of Bristol, 2014-2018</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h3>Experience</h3>
+                        <p><strong>Research Fellow</strong><br>
+                        Cambridge University, 2022-Present</p>
+                        
+                        <p><strong>Data Scientist</strong><br>
+                        BBC Documentary Unit, 2020-2022</p>
+                        
+                        <p><strong>Teaching Assistant</strong><br>
+                        Statistics Department, 2018-2020</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h3>Skills & Interests</h3>
+                        <p><strong>Technical:</strong> Statistical Modeling, R, Python, Data Visualization</p>
+                        <p><strong>Research:</strong> Applied Statistics, Data Journalism</p>
+                        <p><strong>Other:</strong> Documentary Filmmaking, Science Communication</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="section publications">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Publications</h2>
+                    <p>A selection of my recent research papers and publications.</p>
+                </div>
+                
+                <div class="pub-list">
+                    <div class="pub-item">
+                        <h3>Statistical Methods for Documentary Storytelling</h3>
+                        <div class="pub-meta">
+                            <span>Journal of Data Journalism, 2023</span>
+                            <span>Co-authors: A. Researcher, B. Scholar</span>
+                        </div>
+                        <p>Exploring how statistical methods can enhance narrative storytelling in documentary filmmaking.</p>
+                        <a href="#">Read Paper →</a>
+                    </div>
+                    
+                    <div class="pub-item">
+                        <h3>Data Visualization Techniques for Public Understanding</h3>
+                        <div class="pub-meta">
+                            <span>Data Science Quarterly, 2022</span>
+                            <span>Co-authors: C. Expert, D. Specialist</span>
+                        </div>
+                        <p>New approaches to visualizing complex statistical concepts for general audiences.</p>
+                        <a href="#">Read Paper →</a>
+                    </div>
+                    
+                    <div class="pub-item">
+                        <h3>Bayesian Approaches to Media Analysis</h3>
+                        <div class="pub-meta">
+                            <span>Statistical Methods Journal, 2021</span>
+                            <span>Co-authors: E. Colleague, F. Partner</span>
+                        </div>
+                        <p>Applying Bayesian statistics to understand media consumption patterns.</p>
+                        <a href="#">Read Paper →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- In the News Section -->
+        <section id="news" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>In the News</h2>
+                    <p>Media appearances and coverage of my work.</p>
+                </div>
+                
+                <div class="pub-list">
+                    <div class="pub-item">
+                        <h3>Featured in "Statistics for Storytellers" Documentary</h3>
+                        <div class="pub-meta">
+                            <span>BBC Four, 2023</span>
+                        </div>
+                        <p>Interviewed about my work bridging statistics and documentary filmmaking.</p>
+                        <a href="#">Watch Segment →</a>
+                    </div>
+                    
+                    <div class="pub-item">
+                        <h3>Guest on "The Data Hour" Podcast</h3>
+                        <div class="pub-meta">
+                            <span>The Data Science Podcast, 2022</span>
+                        </div>
+                        <p>Discussed the role of statistics in modern journalism and media.</p>
+                        <a href="#">Listen Now →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-links">
+                    <a href="#summary">Summary</a>
+                    <a href="#publications">Publications</a>
+                    <a href="#news">In the News</a>
+                    <a href="#" class="btn">Download CV</a>
+                </div>
+                
+                <p class="copyright">© 2023 Hannah Rose Kirk. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <script>
+        // Highlight active navigation link
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Update active link on scroll
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= sectionTop - 100) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
