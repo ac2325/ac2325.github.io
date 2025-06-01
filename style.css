@@ -1,6 +1,8 @@
 /* styles.css */
 
 /* Reset and Base Styles */
+
+
 * {
     margin: 0;
     padding: 0;
@@ -17,6 +19,9 @@
     --border: #e0e0e0;
     --sidebar-width: 30%;
     --content-width: 70%;
+}
+html {
+  scroll-behavior: smooth;
 }
 
 body {
