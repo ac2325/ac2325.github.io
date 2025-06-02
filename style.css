@@ -374,9 +374,7 @@ footer {
     color: var(--primary);
 }
 
-[data-theme="dark"] .publications {
-    background-color: var(--publications-bg);
-}
+
 
 [data-theme="dark"] .nav-links a {
     color: var(--secondary);
