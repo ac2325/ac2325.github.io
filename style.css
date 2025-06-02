@@ -186,19 +186,6 @@ a:hover {
     margin-bottom: 1.5rem;
 }
 
-.keywords {
-  font-family: 'Inconsolata', monospace;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  white-space: pre-line;
-  color: #ce9178;
-  user-select: none;
-  transition: opacity 0.5s ease;
-}
-.keywords span {
-  display: inline-block;
-  min-width: 250px; /* To keep layout stable */
-}
 
 /* About Section */
 .section {
