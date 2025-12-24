@@ -298,6 +298,35 @@
             margin: 0 auto;
         }
 
+        /* Update table styles */
+        .update-table {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 0 2rem auto; /* Top margin added, aligned right */
+            border-collapse: collapse;
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.9rem;
+        }
+
+        .update-table td {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        .update-table td:first-child {
+            text-align: left;
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding-right: 1rem;
+        }
+
+        .update-table td:last-child {
+            text-align: right;
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
         /* Content Sections - Reduced spacing */
         .section {
             margin-bottom: 2.5rem; /* Reduced from 3.5rem */
@@ -423,6 +452,11 @@
             .keyword-line {
                 height: 0.9em;
             }
+            
+            .update-table {
+                margin: 0 auto 2rem; /* Center on mobile */
+                max-width: 100%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -450,6 +484,10 @@
             .section {
                 margin-bottom: 2rem;
             }
+            
+            .update-table {
+                font-size: 0.85rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -472,6 +510,10 @@
             
             .keywords-code {
                 font-size: 0.9rem;
+            }
+            
+            .update-table {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -532,6 +574,14 @@
 
     <!-- Main Content - 60% width with left margin, REDUCED padding -->
     <main class="main-content">
+        <!-- Update Table at the top-right -->
+        <table class="update-table">
+            <tr>
+                <td>Last updated</td>
+                <td>May 2024</td>
+            </tr>
+        </table>
+
         <!-- Summary Section -->
         <section id="summary" class="section">
             <div class="container">
