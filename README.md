@@ -1,2 +1,2 @@
 # ac2325.github.io
-website
+My website (created mostly with HTML, with a bit of javascript for animation! 
