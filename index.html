@@ -300,31 +300,34 @@
 
         /* Update table styles */
         .update-table {
-            width: 100%;
+            width: auto; /* Changed from 100% to auto */
             max-width: 400px;
-            margin: 0 0 2rem auto; /* Top margin added, aligned right */
+            margin: 0 0 2rem auto; /* Already aligned right */
             border-collapse: collapse;
             font-family: 'Inconsolata', monospace;
             font-size: 0.9rem;
+            float: right; /* Add this to float to the right */
         }
-
+        
         .update-table td {
             padding: 0.5rem 0;
             border-bottom: 1px solid var(--border);
             vertical-align: middle;
         }
-
+        
         .update-table td:first-child {
-            text-align: left;
+            text-align: right; /* Changed from left to right */
             color: var(--text-secondary);
             font-weight: 500;
             padding-right: 1rem;
+            white-space: nowrap; /* Prevent text wrapping */
         }
-
+        
         .update-table td:last-child {
             text-align: right;
             color: var(--text-primary);
             font-weight: 400;
+            padding-left: 1rem; /* Add left padding for separation */
         }
 
         /* Content Sections - Reduced spacing */
