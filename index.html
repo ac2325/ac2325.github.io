@@ -68,17 +68,17 @@
             min-height: 100vh;
         }
 
-        /* Sidebar Styles - Fixed 30% width */
+        /* Sidebar Styles - Fixed 35% width */
         .sidebar {
-            width: 30%;
-            min-width: 320px;
-            max-width: 400px;
+            width: 35%;
+            min-width: 350px;
+            max-width: 450px;
             background-color: var(--bg-sidebar);
             padding: 2.5rem 2rem;
             border-right: 1px solid var(--border);
             display: flex;
             flex-direction: column;
-            position: fixed; /* Changed to fixed */
+            position: fixed; /* Fixed position */
             top: 0;
             left: 0;
             height: 100vh;
@@ -178,7 +178,7 @@
             line-height: 1.2;
         }
 
-        /* Animated Keywords in Sidebar - Reduced spacing */
+        /* Animated Keywords in Sidebar - NO SPACING between lines */
         .keywords-container {
             margin: 1.5rem 0 2rem;
             padding: 1.25rem;
@@ -192,13 +192,13 @@
         .keywords-code {
             font-size: 1rem;
             color: var(--text-secondary);
-            line-height: 1.3; /* Reduced from 1.6 */
+            line-height: 1.0; /* NO SPACING between lines */
         }
 
         .keyword-line {
             display: block;
-            margin-top: 0.25rem; /* Reduced from 0.5rem */
-            height: 1.4em; /* Fixed height for consistent spacing */
+            margin-top: 0; /* NO SPACING between lines */
+            height: 1.2em; /* Fixed height for consistent spacing */
             overflow: hidden;
         }
 
@@ -232,7 +232,7 @@
         .nav-links {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem; /* Reduced gap */
+            gap: 0.75rem;
             margin: 1.5rem 0 2rem;
         }
 
@@ -282,11 +282,11 @@
             color: var(--accent);
         }
 
-        /* Main Content - Takes remaining 70% with left margin */
+        /* Main Content - Takes remaining 65% with left margin */
         .main-content {
             flex: 1;
-            width: 70%;
-            margin-left: 30%; /* Push content right to account for fixed sidebar */
+            width: 65%;
+            margin-left: 35%; /* Push content right to account for fixed sidebar */
             padding: 2.5rem 3rem;
             background-color: var(--bg-primary);
         }
@@ -420,7 +420,7 @@
             }
             
             .keyword-line {
-                margin-top: 0.2rem;
+                height: 1.1em;
             }
         }
 
@@ -439,7 +439,7 @@
             }
             
             .keyword-line {
-                height: 1.3em;
+                height: 1em;
             }
             
             .main-content {
@@ -476,7 +476,7 @@
     </style>
 </head>
 <body>
-    <!-- Sidebar - Fixed 30% width -->
+    <!-- Sidebar - Fixed 35% width -->
     <aside class="sidebar">
         <div class="toggle-wrapper">
             <label class="switch">
@@ -492,7 +492,7 @@
 
         <h1>Akanksha Chatterjee</h1>
 
-        <!-- Animated Keywords in Sidebar - Compact spacing -->
+        <!-- Animated Keywords in Sidebar - NO SPACING between lines -->
         <div class="keywords-container">
             <code class="keywords-code">
                 <span class="keyword-var">keywords</span>
@@ -528,7 +528,7 @@
         </div>
     </aside>
 
-    <!-- Main Content - 70% width with left margin -->
+    <!-- Main Content - 65% width with left margin -->
     <main class="main-content">
         <!-- Summary Section -->
         <section id="summary" class="section">
