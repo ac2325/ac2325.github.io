@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,25 +12,28 @@
         :root {
             /* Light Theme */
             --bg-primary-light: #ffffff;
-            --bg-secondary-light: #f8f9fa;
+            --bg-secondary-light: #fff8fa; /* Very light rose */
+            --bg-sidebar-light: #fff5f9; /* Faint rose */
             --text-primary-light: #1a1a1a;
             --text-secondary-light: #6c757d;
             --accent-light: #2563eb;
-            --border-light: #e9ecef;
-            --code-bg-light: #f1f3f5;
+            --border-light: #f0d8e0; /* Light rose border */
+            --code-bg-light: #f8f0f5; /* Light rose code background */
 
             /* Dark Theme */
             --bg-primary-dark: #0a0a0a;
-            --bg-secondary-dark: #1a1a1a;
+            --bg-secondary-dark: #0d1117; /* Dark blue-black */
+            --bg-sidebar-dark: #0b0f1a; /* Dark blue sidebar */
             --text-primary-dark: #f8f9fa;
             --text-secondary-dark: #adb5bd;
             --accent-dark: #3b82f6;
-            --border-dark: #2d2d2d;
-            --code-bg-dark: #2d2d2d;
+            --border-dark: #1e293b; /* Dark blue border */
+            --code-bg-dark: #1e293b; /* Dark blue code background */
 
             /* Active Theme (Defaults to Light) */
             --bg-primary: var(--bg-primary-light);
             --bg-secondary: var(--bg-secondary-light);
+            --bg-sidebar: var(--bg-sidebar-light);
             --text-primary: var(--text-primary-light);
             --text-secondary: var(--text-secondary-light);
             --accent: var(--accent-light);
@@ -43,6 +44,7 @@
         [data-theme="dark"] {
             --bg-primary: var(--bg-primary-dark);
             --bg-secondary: var(--bg-secondary-dark);
+            --bg-sidebar: var(--bg-sidebar-dark);
             --text-primary: var(--text-primary-dark);
             --text-secondary: var(--text-secondary-dark);
             --accent: var(--accent-dark);
@@ -62,76 +64,128 @@
             color: var(--text-primary);
             line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Header & Two-Column Layout */
-        header {
-            padding: 4rem 0 3rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .profile-container {
             display: flex;
-            gap: 4rem;
-            align-items: flex-start;
+            min-height: 100vh;
         }
 
-        @media (max-width: 768px) {
-            .profile-container {
-                flex-direction: column;
-                gap: 2rem;
-            }
+        /* Sidebar Styles */
+        .sidebar {
+            width: 320px;
+            background-color: var(--bg-sidebar);
+            padding: 2.5rem 2rem;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            transition: background-color 0.3s ease;
         }
 
-        .profile-image {
-            flex-shrink: 0;
+        /* Theme Toggle in Sidebar */
+        .toggle-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: var(--code-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+            align-self: flex-start;
         }
 
-        .profile-image img {
+        .toggle-label {
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            user-select: none;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--bg-primary);
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--accent);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Profile Image */
+        .hero-image {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image img {
             width: 180px;
             height: 180px;
             object-fit: cover;
             border-radius: 12px;
-            border: 1px solid var(--border);
+            border: 2px solid var(--border);
+            transition: border-color 0.3s ease;
         }
 
-        .profile-content {
-            flex: 1;
-        }
-
-        .name-title h1 {
+        /* Name */
+        .sidebar h1 {
             font-family: 'Inconsolata', monospace;
             font-weight: 700;
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
-        }
-
-        .name-title .subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            color: var(--text-secondary);
+            font-size: 2.25rem;
             margin-bottom: 2rem;
+            color: var(--text-primary);
+            text-align: center;
         }
 
-        /* Animated Keywords */
+        /* Animated Keywords in Sidebar */
         .keywords-container {
-            margin: 2.5rem 0;
+            margin: 1.5rem 0 2.5rem;
             padding: 1.5rem;
             background-color: var(--code-bg);
             border-radius: 8px;
             border-left: 4px solid var(--accent);
             font-family: 'Inconsolata', monospace;
+            border: 1px solid var(--border);
         }
 
         .keywords-code {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
         }
 
@@ -152,32 +206,25 @@
             color: var(--text-secondary);
         }
 
-        .keyword-display {
-            display: inline-block;
-            min-width: 300px;
-            margin-left: 0.5rem;
-        }
-
         .keyword-item {
             display: inline-block;
             color: #ce9178; /* Light orange for string values */
             opacity: 1;
             transition: opacity 0.4s ease;
             position: relative;
+            min-width: 200px;
         }
 
         .keyword-item.fading {
             opacity: 0;
         }
 
-        /* Navigation */
+        /* Navigation in Sidebar */
         .nav-links {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 2rem 0;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0 2.5rem;
         }
 
         .nav-links a {
@@ -185,36 +232,62 @@
             font-weight: 500;
             text-decoration: none;
             color: var(--text-secondary);
-            font-size: 1rem;
-            padding: 0.25rem 0;
-            position: relative;
-            transition: color 0.2s ease;
+            font-size: 1.1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
         }
 
         .nav-links a:hover {
             color: var(--text-primary);
+            background-color: var(--code-bg);
+            border-color: var(--border);
         }
 
         .nav-links a.active {
             color: var(--accent);
             font-weight: 700;
+            background-color: var(--code-bg);
+            border-color: var(--accent);
         }
 
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -0.5rem;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--accent);
+        /* Social Links in Sidebar */
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
         }
 
-        /* Main Content Sections */
-        main {
-            padding: 3rem 0;
+        .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.2s ease;
         }
 
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 2.5rem 3rem;
+            overflow-y: auto;
+            background-color: var(--bg-primary);
+        }
+
+        /* Container for content sections */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Content Sections */
         .section {
             margin-bottom: 4rem;
             scroll-margin-top: 2rem;
@@ -287,98 +360,61 @@
             text-decoration: underline;
         }
 
-        /* Social Links */
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 1.5rem;
+            }
+            
+            .main-content {
+                padding: 2rem;
+            }
+            
+            .hero-image img {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .sidebar h1 {
+                font-size: 1.75rem;
+            }
+            
+            .nav-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links a {
+                padding: 0.5rem 1rem;
+            }
         }
 
-        .social-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: color 0.2s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Theme Toggle */
-        .theme-toggle-container {
-            position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
-            z-index: 100;
-        }
-
-        .toggle-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            background-color: var(--code-bg);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            border: 1px solid var(--border);
-        }
-
-        .toggle-label {
-            font-family: 'Inconsolata', monospace;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            user-select: none;
-        }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: var(--border);
-            transition: .4s;
-            border-radius: 34px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: var(--bg-primary);
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: var(--accent);
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .keywords-container {
+                padding: 1rem;
+            }
+            
+            .keyword-item {
+                min-width: 150px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <div class="theme-toggle-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
         <div class="toggle-wrapper">
             <label class="switch">
                 <input type="checkbox" id="theme-toggle" />
@@ -386,63 +422,54 @@
             </label>
             <span class="toggle-label">Dark Mode</span>
         </div>
-    </div>
 
-    <div class="container">
-        <!-- Header with Profile -->
-        <header>
-            <div class="profile-container">
-                <div class="profile-image">
-                    <img src="images/profile_img.jpg" alt="Portrait of Akanksha Chatterjee">
-                </div>
-                <div class="profile-content">
-                    <div class="name-title">
-                        <h1>Akanksha Chatterjee.</h1>
-                        <p class="subtitle">Computational Social Scientist & AI Researcher</p>
-                    </div>
+        <div class="hero-image">
+            <img src="images/profile_img.jpg" alt="Portrait of Akanksha Chatterjee" />
+        </div>
 
-                    <!-- Animated Keywords -->
-                    <div class="keywords-container">
-                        <code class="keywords-code">
-                            <span class="keyword-var">keywords</span>
-                            <span class="keyword-operator"> = </span>
-                            <span class="keyword-bracket">{</span>
-                            <br>
-                            <span class="keyword-line">"<span id="keyword1" class="keyword-item">computational social science</span>",</span>
-                            <br>
-                            <span class="keyword-line">"<span id="keyword2" class="keyword-item">ai for political research</span>",</span>
-                            <br>
-                            <span class="keyword-line">"<span id="keyword3" class="keyword-item">machine learning</span>"</span>
-                            <br>
-                            <span class="keyword-bracket">}</span>
-                        </code>
-                    </div>
+        <h1>Akanksha Chatterjee</h1>
 
-                    <!-- Navigation -->
-                    <nav class="nav-links">
-                        <a href="#summary" class="active">Summary</a>
-                        <a href="#projects">Projects</a>
-                        <a href="#news">Publications</a>
-                        <a href="#article">Blogs</a>
-                    </nav>
+        <!-- Animated Keywords in Sidebar -->
+        <div class="keywords-container">
+            <code class="keywords-code">
+                <span class="keyword-var">keywords</span>
+                <span class="keyword-operator"> = </span>
+                <span class="keyword-bracket">{</span>
+                <br>
+                <span class="keyword-line">"<span id="keyword1" class="keyword-item">computational social science</span>",</span>
+                <br>
+                <span class="keyword-line">"<span id="keyword2" class="keyword-item">ai for political research</span>",</span>
+                <br>
+                <span class="keyword-line">"<span id="keyword3" class="keyword-item">machine learning</span>"</span>
+                <br>
+                <span class="keyword-bracket">}</span>
+            </code>
+        </div>
 
-                    <!-- Social Links -->
-                    <div class="social-links">
-                        <a href="https://github.com/ac2325" target="_blank" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/akanksha-chatterjee-b08782250/" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <!-- Navigation -->
+        <nav class="nav-links">
+            <a href="#summary" class="active">Summary</a>
+            <a href="#projects">Projects</a>
+            <a href="#news">Publications</a>
+            <a href="#article">Blogs</a>
+        </nav>
 
-        <!-- Main Content -->
-        <main>
-            <!-- Summary Section -->
-            <section id="summary" class="section">
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://github.com/ac2325" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/akanksha-chatterjee-b08782250/" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Summary Section -->
+        <section id="summary" class="section">
+            <div class="container">
                 <div class="section-title">
                     <h2>Summary</h2>
                     <p>Aspiring researcher experienced in data analysis, machine learning, predictive modelling, and network analysis.</p>
@@ -461,10 +488,12 @@
                         <p><strong>Other:</strong> Team Management, Presentations, Leadership, Organising Events</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Projects Section -->
-            <section id="projects" class="section">
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
                 <div class="section-title">
                     <h2>Projects</h2>
                     <p>A selection of key projects demonstrating my research and development work.</p>
@@ -486,10 +515,12 @@
                         <p>Led development of an NLP-driven matching algorithm connecting healthcare professionals with demand areas, integrating data scraping and network analysis.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Publications Section -->
-            <section id="news" class="section">
+        <!-- Publications Section -->
+        <section id="news" class="section">
+            <div class="container">
                 <div class="section-title">
                     <h2>Publications</h2>
                     <p>Articles highlighting my work.</p>
@@ -503,10 +534,12 @@
                         <p>Created a visualisation platform showing global internet freedom trends and electoral integrity using advanced data analysis.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Blogs Section -->
-            <section id="article" class="section">
+        <!-- Blogs Section -->
+        <section id="article" class="section">
+            <div class="container">
                 <div class="section-title">
                     <h2>Blogs</h2>
                     <p>Long-form reflections and thought pieces.</p>
@@ -527,9 +560,9 @@
                         <p>We are facing a new reality. Machines are not becoming people but are becoming actors in systems that impact us. To respond, we need to rethink some key philosophical concepts. Agency is one such concept that is no longer just a human trait but extends to technology..</p>
                     </div>
                 </div>
-            </section>
-        </main>
-    </div>
+            </div>
+        </section>
+    </main>
 
     <script>
         // Theme Toggle Logic
@@ -561,6 +594,11 @@
             document.getElementById('keyword2'),
             document.getElementById('keyword3')
         ];
+
+        // Initialize with first three keywords
+        keywordElements[0].textContent = allKeywords[0];
+        keywordElements[1].textContent = allKeywords[2];
+        keywordElements[2].textContent = allKeywords[5];
 
         // Function to get a random keyword, different from current ones
         function getRandomKeyword(currentKeywords) {
