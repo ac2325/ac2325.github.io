@@ -12,23 +12,23 @@
         :root {
             /* Light Theme */
             --bg-primary-light: #ffffff;
-            --bg-secondary-light: #fff8fa; /* Very light rose */
-            --bg-sidebar-light: #fff5f9; /* Faint rose */
+            --bg-secondary-light: #fff8fa;
+            --bg-sidebar-light: #fff5f9;
             --text-primary-light: #1a1a1a;
             --text-secondary-light: #6c757d;
             --accent-light: #2563eb;
-            --border-light: #f0d8e0; /* Light rose border */
-            --code-bg-light: #f8f0f5; /* Light rose code background */
+            --border-light: #f0d8e0;
+            --code-bg-light: #f8f0f5;
 
             /* Dark Theme */
             --bg-primary-dark: #0a0a0a;
-            --bg-secondary-dark: #0d1117; /* Dark blue-black */
-            --bg-sidebar-dark: #0b0f1a; /* Dark blue sidebar */
+            --bg-secondary-dark: #0d1117;
+            --bg-sidebar-dark: #0b0f1a;
             --text-primary-dark: #f8f9fa;
             --text-secondary-dark: #adb5bd;
             --accent-dark: #3b82f6;
-            --border-dark: #1e293b; /* Dark blue border */
-            --code-bg-dark: #1e293b; /* Dark blue code background */
+            --border-dark: #1e293b;
+            --code-bg-dark: #1e293b;
 
             /* Active Theme (Defaults to Light) */
             --bg-primary: var(--bg-primary-light);
@@ -68,7 +68,6 @@
             min-height: 100vh;
         }
 
-        /* Sidebar Styles - Fixed 40% width */
         .sidebar {
             width: 40%;
             min-width: 380px;
@@ -78,7 +77,7 @@
             border-right: 1px solid var(--border);
             display: flex;
             flex-direction: column;
-            position: fixed; /* Fixed position */
+            position: fixed;
             top: 0;
             left: 0;
             height: 100vh;
@@ -87,7 +86,6 @@
             z-index: 100;
         }
 
-        /* Theme Toggle in Sidebar */
         .toggle-wrapper {
             display: flex;
             align-items: center;
@@ -152,23 +150,30 @@
             transform: translateX(26px);
         }
 
-        /* Profile Image - Circular and Larger */
+        /* Make sure round class exists */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
         .hero-image {
             text-align: center;
             margin-bottom: 1.5rem;
         }
 
         .hero-image img {
-            width: 300px; /* Increased from 200px */
-            height: 300px; /* Increased from 200px */
+            width: 300px;
+            height: 300px;
             object-fit: cover;
-            border-radius: 50%; /* Changed to circular */
+            border-radius: 50%;
             border: 3px solid var(--border);
             transition: border-color 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        /* Name */
         .sidebar h1 {
             font-family: 'Inconsolata', monospace;
             font-weight: 700;
@@ -179,8 +184,7 @@
             line-height: 1.2;
         }
 
-        /* Animated  in Sidebar - EXTREMELY REDUCED spacing */
-        .-container {
+        .keywords-container {
             margin: 1rem 0 1.5rem;
             padding: 1rem;
             background-color: var(--code-bg);
@@ -193,18 +197,18 @@
         .keywords-code {
             font-size: 1rem;
             color: var(--text-secondary);
-            line-height: 0.9; /* EXTREMELY REDUCED from 1.0 */
+            line-height: 0.9;
         }
 
         .keyword-line {
             display: block;
             margin-top: 0;
-            height: 1em; /* Reduced from 1.2em */
+            height: 1em;
             overflow: hidden;
         }
 
         .keyword-var {
-            color: #569cd6; /* Blue for variable */
+            color: #569cd6;
         }
 
         .keyword-operator {
@@ -217,7 +221,7 @@
 
         .keyword-item {
             display: inline-block;
-            color: #ce9178; /* Light orange for string values */
+            color: #ce9178;
             opacity: 1;
             transition: opacity 0.4s ease;
             position: relative;
@@ -229,11 +233,10 @@
             opacity: 0;
         }
 
-        /* Navigation in Sidebar */
         .nav-links {
             display: flex;
             flex-direction: column;
-            gap: 0.6rem; /* Reduced gap */
+            gap: 0.6rem;
             margin: 1rem 0 1.5rem;
         }
 
@@ -243,7 +246,7 @@
             text-decoration: none;
             color: var(--text-secondary);
             font-size: 1.1rem;
-            padding: 0.6rem 1rem; /* Reduced padding */
+            padding: 0.6rem 1rem;
             border-radius: 6px;
             transition: all 0.2s ease;
             border: 1px solid transparent;
@@ -262,7 +265,6 @@
             border-color: var(--accent);
         }
 
-        /* Social Links in Sidebar */
         .social-links {
             display: flex;
             gap: 1.5rem;
@@ -283,30 +285,27 @@
             color: var(--accent);
         }
 
-        /* Main Content - Takes remaining 60% with left margin, REDUCED padding */
         .main-content {
             flex: 1;
             width: 60%;
-            margin-left: 20%; /* Push content right to account for fixed sidebar */
-            padding: 1.5rem 2rem; /* REDUCED from 2.5rem 3rem */
+            margin-left: 20%; 
+            padding: 1.5rem 2rem;
             background-color: var(--bg-primary);
         }
 
-        /* Container for content sections */
         .container {
             max-width: 800px;
             margin: 0 auto;
         }
 
-        /* Update table styles */
         .update-table {
-            width: auto; /* Changed from 100% to auto */
+            width: auto;
             max-width: 400px;
-            margin: 0 0 2rem auto; /* Already aligned right */
+            margin: 0 0 2rem auto;
             border-collapse: collapse;
             font-family: 'Inconsolata', monospace;
             font-size: 0.9rem;
-            float: right; /* Add this to float to the right */
+            float: right;
         }
         
         .update-table td {
@@ -316,23 +315,22 @@
         }
         
         .update-table td:first-child {
-            text-align: right; /* Changed from left to right */
+            text-align: right;
             color: var(--text-secondary);
             font-weight: 500;
             padding-right: 1rem;
-            white-space: nowrap; /* Prevent text wrapping */
+            white-space: nowrap;
         }
         
         .update-table td:last-child {
             text-align: right;
             color: var(--text-primary);
             font-weight: 400;
-            padding-left: 1rem; /* Add left padding for separation */
+            padding-left: 1rem;
         }
 
-        /* Content Sections - Reduced spacing */
         .section {
-            margin-bottom: 2.5rem; /* Reduced from 3.5rem */
+            margin-bottom: 2.5rem;
             scroll-margin-top: 1.5rem;
         }
 
@@ -340,7 +338,7 @@
             font-family: 'Inconsolata', monospace;
             font-size: 1.75rem;
             font-weight: 700;
-            margin-bottom: 0.5rem; /* Reduced from 0.75rem */
+            margin-bottom: 0.5rem;
             color: #d35400;
         }
 
@@ -348,20 +346,19 @@
             font-family: 'Inter', sans-serif;
             color: var(--text-secondary);
             font-size: 1.1rem;
-            margin-bottom: 1.5rem; /* Reduced from 2rem */
+            margin-bottom: 1.5rem;
             max-width: 700px;
         }
 
-        /* Grids and Cards - Reduced spacing */
         .about-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.2rem; /* Reduced from 1.5rem */
-            margin-top: 0.5rem; /* Reduced from 1rem */
+            gap: 1.2rem;
+            margin-top: 0.5rem;
         }
 
         .about-card, .pub-item {
-            padding: 1rem; /* Reduced from 1.25rem */
+            padding: 1rem;
             border: 1px solid var(--border);
             border-radius: 8px;
             background-color: var(--bg-primary);
@@ -376,14 +373,14 @@
         .about-card h3, .pub-item h3 {
             font-family: 'Inconsolata', monospace;
             font-size: 1.2rem;
-            margin-bottom: 0.6rem; /* Reduced from 0.75rem */
+            margin-bottom: 0.6rem;
             color: var(--text-primary);
         }
 
         .about-card p, .pub-item p {
             font-family: 'Inter', sans-serif;
             color: var(--text-secondary);
-            margin-bottom: 0.4rem; /* Reduced from 0.5rem */
+            margin-bottom: 0.4rem;
             font-size: 0.95rem;
             line-height: 1.5;
         }
@@ -392,7 +389,7 @@
             font-family: 'Inconsolata', monospace;
             color: var(--text-secondary);
             font-size: 0.85rem;
-            margin-bottom: 0.6rem; /* Reduced from 0.75rem */
+            margin-bottom: 0.6rem;
         }
 
         .pub-meta a {
@@ -405,7 +402,6 @@
             text-decoration: underline;
         }
 
-        /* Responsive Design */
         @media (max-width: 1024px) {
             body {
                 flex-direction: column;
@@ -457,7 +453,7 @@
             }
             
             .update-table {
-                margin: 0 auto 2rem; /* Center on mobile */
+                margin: 0 auto 2rem;
                 max-width: 100%;
             }
         }
@@ -527,7 +523,7 @@
         <div class="toggle-wrapper">
             <label class="switch">
                 <input type="checkbox" id="theme-toggle" />
-                <span class="slider round"></span>
+                <span class="slider round"></span> <!-- Added round class -->
             </label>
             <span class="toggle-label">Dark Mode</span>
         </div>
@@ -538,7 +534,7 @@
 
         <h1>Akanksha Chatterjee</h1>
 
-        <!-- Animated Keywords in Sidebar - EXTREMELY REDUCED spacing -->
+        <!-- Animated Keywords in Sidebar -->
         <div class="keywords-container">
             <code class="keywords-code">
                 <span class="keyword-var">keywords</span>
@@ -575,7 +571,7 @@
         </div>
     </aside>
 
-    <!-- Main Content - 60% width with left margin, REDUCED padding -->
+    <!-- Main Content - 60% width with left margin -->
     <main class="main-content">
         <!-- Update Table at the top-right -->
         <table class="update-table">
@@ -601,7 +597,7 @@
                     </div>
                     <div class="about-card">
                         <h3>Skills & Interests</h3>
-                        <p><strong>Technical:</strong> Python, R, C++, Machine Learning, NLP, , Computer Vision, Data Visualisation, UX Design</p>
+                        <p><strong>Technical:</strong> Python, R, C++, Machine Learning, NLP, Computer Vision, Data Visualisation, UX Design</p>
                         <p><strong>Research:</strong> Computational Social Science, Predictive Modelling, Network Analysis, Data Scraping</p>
                         <p><strong>Other:</strong> Team Management, Presentations, Signal Processing</p>
                     </div>
@@ -708,13 +704,14 @@
     </main>
 
     <script>
-        // Theme Toggle Logic
+        // Theme Toggle Logic - Fixed
         const toggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
 
         toggle.addEventListener('change', () => {
-            html.setAttribute('data-theme', toggle.checked ? 'dark' : 'light');
-            localStorage.setItem('theme', toggle.checked ? 'dark' : 'light');
+            const isDark = toggle.checked;
+            html.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
 
         // Load saved theme
@@ -722,13 +719,13 @@
         html.setAttribute('data-theme', savedTheme);
         toggle.checked = savedTheme === 'dark';
 
-        // Animated Keywords Logic
+        // Enhanced Keywords Logic with decreasing probability
         const allKeywords = [
             "Computational Social Science",
             "Future Circular Collider",
             "AI for Political Research",
             "Badminton",
-            "Running".
+            "Running",
             "Large Language Models",
             "Opinion Polls",
             "Cultural Sociology",
@@ -737,6 +734,65 @@
             "Machine Learning"
         ];
 
+        // Initialize keyword usage tracking in localStorage
+        function initializeKeywordUsage() {
+            const now = Date.now();
+            const weekAgo = now - (7 * 24 * 60 * 60 * 1000); // 7 days ago
+            
+            let keywordUsage = JSON.parse(localStorage.getItem('keywordUsage') || '{}');
+            
+            // Clean up old entries (older than 7 days)
+            for (const keyword in keywordUsage) {
+                if (keywordUsage[keyword] < weekAgo) {
+                    delete keywordUsage[keyword];
+                }
+            }
+            
+            localStorage.setItem('keywordUsage', JSON.stringify(keywordUsage));
+            return keywordUsage;
+        }
+
+        // Get weighted random keyword based on recency
+        function getWeightedRandomKeyword(currentKeywords) {
+            const keywordUsage = JSON.parse(localStorage.getItem('keywordUsage') || '{}');
+            const available = allKeywords.filter(k => !currentKeywords.includes(k));
+            
+            if (available.length === 0) return allKeywords[0];
+            
+            // Calculate weights: less recently used = higher weight
+            const weights = available.map(keyword => {
+                if (!keywordUsage[keyword]) {
+                    return 10; // Never shown before, high weight
+                }
+                
+                const timeSinceLastShow = Date.now() - keywordUsage[keyword];
+                const daysSince = timeSinceLastShow / (24 * 60 * 60 * 1000);
+                
+                // Weight decreases with recency: shown yesterday = weight 1, shown week ago = weight 7
+                return Math.min(Math.max(Math.floor(daysSince), 1), 10);
+            });
+            
+            // Weighted random selection
+            const totalWeight = weights.reduce((a, b) => a + b, 0);
+            let random = Math.random() * totalWeight;
+            
+            for (let i = 0; i < available.length; i++) {
+                if (random < weights[i]) {
+                    return available[i];
+                }
+                random -= weights[i];
+            }
+            
+            return available[0];
+        }
+
+        // Update keyword usage in localStorage
+        function recordKeywordUsage(keyword) {
+            let keywordUsage = JSON.parse(localStorage.getItem('keywordUsage') || '{}');
+            keywordUsage[keyword] = Date.now();
+            localStorage.setItem('keywordUsage', JSON.stringify(keywordUsage));
+        }
+
         const keywordElements = [
             document.getElementById('keyword1'),
             document.getElementById('keyword2'),
@@ -744,37 +800,45 @@
         ];
 
         // Initialize with first three keywords
-        keywordElements[0].textContent = allKeywords[0];
-        keywordElements[1].textContent = allKeywords[2];
-        keywordElements[2].textContent = allKeywords[5];
-
-        // Function to get a random keyword, different from current ones
-        function getRandomKeyword(currentKeywords) {
-            const available = allKeywords.filter(k => !currentKeywords.includes(k));
-            if (available.length === 0) return allKeywords[Math.floor(Math.random() * allKeywords.length)];
-            return available[Math.floor(Math.random() * available.length)];
+        function initializeKeywords() {
+            const keywordUsage = initializeKeywordUsage();
+            
+            // Get initial keywords
+            const initialKeywords = [];
+            for (let i = 0; i < 3; i++) {
+                const keyword = getWeightedRandomKeyword(initialKeywords);
+                initialKeywords.push(keyword);
+                keywordElements[i].textContent = keyword;
+                recordKeywordUsage(keyword);
+            }
         }
+
+        // Initialize keywords on page load
+        initializeKeywords();
 
         // Function to change one keyword at a time
         function rotateSingleKeyword() {
-            // Pick a random slot to change
             const slotIndex = Math.floor(Math.random() * keywordElements.length);
             const element = keywordElements[slotIndex];
-
-            // Get current keywords in all slots
+            
+            // Get current keywords
             const currentDisplayed = keywordElements.map(el => el.textContent);
-
+            
+            // Get new keyword
+            const newKeyword = getWeightedRandomKeyword(currentDisplayed);
+            
             // Fade out
             element.classList.add('fading');
-
+            
             // After fade out, change text and fade in
             setTimeout(() => {
-                element.textContent = getRandomKeyword(currentDisplayed);
+                element.textContent = newKeyword;
+                recordKeywordUsage(newKeyword);
                 element.classList.remove('fading');
-            }, 400); // Matches CSS transition time
+            }, 400);
         }
 
-        // Start the rotation (change one keyword every second)
+        // Start the rotation
         setInterval(rotateSingleKeyword, 2300);
 
         // Smooth scrolling for navigation
