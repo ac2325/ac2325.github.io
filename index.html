@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -150,7 +151,6 @@
             transform: translateX(26px);
         }
 
-        /* Make sure round class exists */
         .slider.round {
             border-radius: 34px;
         }
@@ -288,7 +288,7 @@
         .main-content {
             flex: 1;
             width: 60%;
-            margin-left: 20%; 
+            margin-left: 40%; /* because sidebar width is 40% */
             padding: 1.5rem 2rem;
             background-color: var(--bg-primary);
         }
@@ -400,6 +400,47 @@
 
         .pub-meta a:hover {
             text-decoration: underline;
+        }
+
+        /* ----- Project cards in a row (three boxes on same line) ----- */
+        .project-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap; /* allows wrapping on small screens */
+        }
+
+        .project-card {
+            flex: 1 1 0px;          /* equal width, grow/shrink */
+            min-width: 220px;        /* prevent too narrow */
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background-color: var(--bg-primary);
+            transition: border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .project-card h3 {
+            font-family: 'Inconsolata', monospace;
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-primary);
+        }
+
+        .project-card .pub-meta {
+            margin-bottom: 0.6rem;
+        }
+
+        .project-card p {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         @media (max-width: 1024px) {
@@ -523,7 +564,7 @@
         <div class="toggle-wrapper">
             <label class="switch">
                 <input type="checkbox" id="theme-toggle" />
-                <span class="slider round"></span> <!-- Added round class -->
+                <span class="slider round"></span>
             </label>
             <span class="toggle-label">Dark Mode</span>
         </div>
@@ -588,7 +629,6 @@
                     <h2>Summary</h2>
                     <p>Aspiring researcher experienced in data analysis, machine learning, predictive modeling, and network analysis.</p>
                 </div>
-                
             </div>
         </section>
 
@@ -597,7 +637,7 @@
             <div class="container">
                 <div class="section-title">
                     <h2>Experience</h2>
-                    <p>My past experience, incuding both industry and research.</p>
+                    <p>My past experience, including both industry and research.</p>
                 </div>
                 <div class="pub-list">
                     <div class="pub-item">
@@ -617,27 +657,27 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- Projects Section: three cards in a row -->
         <section id="projects" class="section">
             <div class="container">
                 <div class="section-title">
                     <h2>Projects</h2>
                     <p>A selection of key projects demonstrating my research and development work.</p>
                 </div>
-                <div class="pub-list">
-                    <div class="pub-item">
+                <div class="project-row">
+                    <div class="project-card">
                         <h3>Manifesto & Vote-share Prediction Model</h3>
-                        <div class="pub-meta"><span>University of Amsterdam, 2024</span></div>
+                        <div class="pub-meta">University of Amsterdam, 2024</div>
                         <p>Developed a predictive model using the Manifesto Project dataset incorporating economic indicators and LLM bias analysis, presented to ICT office and OpenResearch Centre Amsterdam.</p>
                     </div>
-                    <div class="pub-item">
+                    <div class="project-card">
                         <h3>Inclusive Website for Dutch Police</h3>
-                        <div class="pub-meta"><span>2023</span></div>
+                        <div class="pub-meta">2023</div>
                         <p>Built a user-friendly web app for officer deployment based on linguistic and cultural skills; applied design thinking and user feedback for iterative improvements.</p>
                     </div>
-                    <div class="pub-item">
+                    <div class="project-card">
                         <h3>Matching Algorithm for Healthcare Professionals</h3>
-                        <div class="pub-meta"><span>Sigra, 2023</span></div>
+                        <div class="pub-meta">Sigra, 2023</div>
                         <p>Led development of an NLP-driven matching algorithm connecting healthcare professionals with demand areas, integrating data scraping and network analysis.</p>
                     </div>
                 </div>
@@ -691,7 +731,7 @@
     </main>
 
     <script>
-        // Theme Toggle Logic - Fixed
+        // Theme Toggle Logic
         const toggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
 
@@ -871,3 +911,4 @@
     </script>
 </body>
 </html>
+```
